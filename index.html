@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>姿勢チェック</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    "Noto Sans JP",
+    sans-serif;
+  background: #f5f3ef;
+  color: #3f403d;
+}
+
+.container {
+  max-width: 720px;
+  margin: auto;
+  padding: 24px 18px 50px;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.header small {
+  letter-spacing: 2px;
+  color: #8b9188;
+}
+
+.header h1 {
+  margin: 8px 0;
+  font-size: 28px;
+  font-weight: 600;
+}
+
+.header p {
+  color: #777a75;
+  font-size: 14px;
+}
+
+.card {
+  background: white;
+  border-radius: 18px;
+  padding: 22px;
+  margin-bottom: 18px;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.05);
+}
+
+.card h2 {
+  font-size: 18px;
+  margin-top: 0;
+}
+
+.photo-area {
+  border: 2px dashed #c9cec7;
+  border-radius: 14px;
+  padding: 25px 15px;
+  text-align: center;
+  background: #fafbf9;
+}
+
+.photo-area input {
+  display: none;
+}
+
+.upload-button {
+  display: inline-block;
+  padding: 12px 22px;
+  border-radius: 30px;
+  background: #718474;
+  color: white;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.preview {
+  position: relative;
+  margin-top: 18px;
+  display: none;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.preview img {
+  width: 100%;
+  display: block;
+}
+
+.line {
+  position: absolute;
+  pointer-events: none;
+}
+
+.center-line {
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  border-left: 2px dashed rgba(190,70,70,0.8);
+}
+
+.shoulder-line {
+  left: 15%;
+  right: 15%;
+  top: 30%;
+  border-top: 2px dashed rgba(70,110,170,0.8);
+}
+
+.pelvis-line {
+  left: 20%;
+  right: 20%;
+  top: 53%;
+  border-top: 2px dashed rgba(70,150,110,0.8);
+}
+
+.result {
+  display: none;
+}
+
+.result-item {
+  padding: 14px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.result-item:last-child {
+  border-bottom: none;
+}
+
+.label {
+  font-size: 13px;
+  color: #777;
+}

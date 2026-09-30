@@ -140,3 +140,198 @@ body {
   font-size: 13px;
   color: #777;
 }
+
+.value {
+  margin-top: 5px;
+  font-weight: 600;
+}
+
+.check-button {
+  width: 100%;
+  border: none;
+  padding: 15px;
+  border-radius: 30px;
+  background: #4f6654;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.note {
+  font-size: 12px;
+  line-height: 1.7;
+  color: #888;
+  margin-top: 15px;
+}
+
+.hidden {
+  display: none;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <header class="header">
+    <small>POSTURE CHECK</small>
+    <h1>姿勢チェック</h1>
+    <p>写真から、立ち姿の傾向をチェックします</p>
+  </header>
+
+  <section class="card">
+
+    <h2>① 正面から撮影した写真</h2>
+
+    <div class="photo-area">
+
+      <label class="upload-button">
+        📷 写真を選択
+        <input
+          type="file"
+          id="photoInput"
+          accept="image/*"
+        >
+      </label>
+
+      <p class="note">
+        普段どおり自然に立った写真がおすすめです。<br>
+        写真はこのページ上で処理され、保存されません。
+      </p>
+
+    </div>
+
+    <div class="preview" id="preview">
+
+      <img id="previewImage">
+
+      <div class="line center-line"></div>
+      <div class="line shoulder-line"></div>
+      <div class="line pelvis-line"></div>
+
+    </div>
+
+  </section>
+
+
+  <section class="card">
+
+    <button
+      class="check-button"
+      id="checkButton"
+    >
+      姿勢をチェックする
+    </button>
+
+  </section>
+
+
+  <section
+    class="card result"
+    id="result"
+  >
+
+    <h2>姿勢チェック結果</h2>
+
+    <div class="result-item">
+      <div class="label">身体の中心</div>
+      <div class="value">
+        写真上の中心線を基準に確認してください
+      </div>
+    </div>
+
+    <div class="result-item">
+      <div class="label">肩の左右差</div>
+      <div class="value">
+        写真から左右の高さを確認
+      </div>
+    </div>
+
+    <div class="result-item">
+      <div class="label">骨盤の左右差</div>
+      <div class="value">
+        骨盤ラインの傾きを確認
+      </div>
+    </div>
+
+    <div class="result-item">
+      <div class="label">立ち姿の特徴</div>
+      <div class="value">
+        左右どちらかに体重を逃がしていないか確認
+      </div>
+    </div>
+
+    <p class="note">
+      ※このチェックは写真から見える姿勢の傾向を確認するもので、
+      医学的な診断ではありません。
+    </p>
+
+  </section>
+
+</div>
+
+
+<script>
+
+const photoInput =
+  document.getElementById("photoInput");
+
+const preview =
+  document.getElementById("preview");
+
+const previewImage =
+  document.getElementById("previewImage");
+
+const checkButton =
+  document.getElementById("checkButton");
+
+const result =
+  document.getElementById("result");
+
+
+photoInput.addEventListener("change", function(event) {
+
+  const file = event.target.files[0];
+
+  if (!file) return;
+
+  const reader = new FileReader();
+
+  reader.onload = function(e) {
+
+    previewImage.src = e.target.result;
+
+    preview.style.display = "block";
+
+    result.style.display = "none";
+
+  };
+
+  reader.readAsDataURL(file);
+
+});
+
+
+checkButton.addEventListener("click", function() {
+
+  if (!photoInput.files.length) {
+
+    alert("まず写真を選択してください。");
+
+    return;
+
+  }
+
+  result.style.display = "block";
+
+  result.scrollIntoView({
+    behavior: "smooth"
+  });
+
+});
+
+</script>
+
+</body>
+</html>
